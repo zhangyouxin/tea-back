@@ -1,7 +1,9 @@
 version: '3'
 services:
   mosquitto:
-    build: ./mosquitto/Dockerfile
+    build:
+      context: ./mosquitto
+      dockerfile: Dockerfile
     volumes:
       - ./mosquitto/config:/mosquitto/config
       - ./mosquitto/data:/mosquitto/data
