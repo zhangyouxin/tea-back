@@ -15,7 +15,9 @@ services:
       - '9001:9001'
 
   postgres_db:
-    image: postgres
+    build:
+      context: ./postgres
+      dockerfile: Dockerfile
     environment:
       POSTGRES_DB: mosquitto
       POSTGRES_USER: root
