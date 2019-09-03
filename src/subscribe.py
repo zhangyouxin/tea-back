@@ -4,30 +4,16 @@ import logging
 import os
 import re
 import psycopg2
-from enum import Enum, unique
 logging.basicConfig(filename= './log/app.log', filemode='w', format='%(name)s - %(levelname)s - %(message)s')
 
 HOST = 'localhost'
 PORT = 1883
 
-@unique
-class Topic(Enum):
-    CL_Up = r'(stds\/up\/CL\/)(\d+)'           
-    CL_Offline = r'(stds\/offline\/CL\/)(\d+)'  
-
-    SYS_Up = r'(stds\/up\/sys\/)(\d+)' 
-    SYS_Down = r'(stds\/down\/sys\/)(\d+)'
-    SYS_Offline = r'(stds\/offline\/sys\/)(\d+)'
-
-    CT_Up = r'(stds\/up\/CT\/)(\d+)'   
-    CT_Down_Switch = r'(stds\/down\/CT\/)(\d+)\/(switch)' 
-    CT_Down_Loop = r'(stds\/down\/CT\/)(\d+)\/(loop)' 
-    CT_Offline = r'(stds\/offline\/CT\/)(\d+)' 
-
 topReg = r'stds\/(.*?)(\d+)'
 
 conn = psycopg2.connect(database="mosquitto", user="root",
-                        password="dev", host="localhost", port="5432")
+                        password="dev", host=HOST, port="5432")
+cur = conn.cursor()
 logging.warning('Opened database successfully')
 
 def client_loop():
