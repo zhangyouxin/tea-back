@@ -52,7 +52,9 @@ def on_message(client, userdata, msg):
     else:
         subTopic = res.group(1)
         deviceNo = res.group(2)
-        logging.warning("[Debug] extracted subTopic :", subTopic , 'deviceNo: ', deviceNo, 'msg: ', str(msg.payload))
+        logging.warning("[Debug] extracted subTopic :", subTopic)
+        logging.warning("[Debug] extracted deviceNo :", deviceNo, )
+        logging.warning("[Debug] extracted msg :",  str(msg.payload))
         save_to_database(subTopic, deviceNo, str(msg.payload))
 
 def save_to_database(subTopic, deviceNo, msg):
