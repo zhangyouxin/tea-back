@@ -56,7 +56,7 @@ def on_message(client, userdata, msg):
         save_to_database(subTopic, deviceNo, str(msg.payload))
 
 def save_to_database(subTopic, deviceNo, msg):
-    sqlTemp = "insert into message(sub_topic, device_no, message) values ('{0}', '{1}', '{2}')"
+    sqlTemp = "insert into messages(sub_topic, device_no, message) values ('{0}', '{1}', '{2}')"
     sql = sqlTemp.format(subTopic, deviceNo, msg)
     logging.warning(sql)
     cur.execute(sql)
