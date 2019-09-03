@@ -65,4 +65,5 @@ def save_to_database(subTopic, deviceNo, msg):
     conn.commit()
 
 if __name__ == '__main__':
+    cur = conn.cursor()
     client_loop()

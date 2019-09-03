@@ -1,4 +1,5 @@
 .idea/
+log/
 mosquitto/data/mosquitto.db
 mosquitto/log/mosquitto.log
 ./log/*
