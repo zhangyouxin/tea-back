@@ -2,7 +2,7 @@ DROP TABLE IF EXISTS users;
 DROP TABLE IF EXISTS devices;
 DROP TABLE IF EXISTS messages;
 
-create table messages (id SERIAL PRIMARY KEY, sub_topic VARCHAR(25) NOT NULL, device_no VARCHAR(25) NOT NULL, message VARCHAR(128) NOT NULL DEFAULT 0);
+create table messages (id SERIAL PRIMARY KEY, sub_topic VARCHAR(25) NOT NULL, device_no VARCHAR(25) NOT NULL, message VARCHAR(128) NOT NULL DEFAULT 0, time TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP);
 create table users (id SERIAL PRIMARY KEY, username VARCHAR(25) NOT NULL, password VARCHAR(128) NOT NULL, super smallint NOT NULL DEFAULT 0);
 CREATE UNIQUE INDEX users_username ON users (username);
 
