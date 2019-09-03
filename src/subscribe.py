@@ -12,8 +12,8 @@ PORT = 1883
 
 @unique
 class Topic(Enum):
-    CL_Up = r'(stds\/up\/CL\/)(\d+)'            #采集数据
-    CL_Offline = r'(stds\/offline\/CL\/)(\d+)'  #设备离线
+    CL_Up = r'(stds\/up\/CL\/)(\d+)'           
+    CL_Offline = r'(stds\/offline\/CL\/)(\d+)'  
 
     SYS_Up = r'(stds\/up\/sys\/)(\d+)' 
     SYS_Down = r'(stds\/down\/sys\/)(\d+)'
@@ -26,7 +26,7 @@ class Topic(Enum):
 
 topReg = r'stds\/(.*?)(\d+)'
 
-conn = psycopg2.connect(database="moquitto", user="root",
+conn = psycopg2.connect(database="mosquitto", user="root",
                         password="dev", host="localhost", port="5432")
 logging.warning('Opened database successfully')
 
