@@ -50,15 +50,15 @@ def on_message(client, userdata, msg):
     if res == None:
         logging.warning("[Debug] No Topic extracted for: " + topic)
     else:
-        subTopic = topic.group(0)
-        deviceNo = topic.group(1)
+        subTopic = res.group(1)
+        deviceNo = res.group(2)
         logging.warning("[Debug] extracted subTopic :", subTopic , 'deviceNo: ', deviceNo, 'msg: ', str(msg.payload))
         save_to_database(subTopic, deviceNo, str(msg.payload))
 
 def save_to_database(subTopic, deviceNo, msg):
     sqlTemp = "insert into messages(sub_topic, device_no, message) values ('{0}', '{1}', '{2}')"
     sql = sqlTemp.format(subTopic, deviceNo, msg)
-    logging.warning(sql)
+    logging.warning('insert sql: ', sql)
     cur.execute(sql)
     conn.commit()
 
