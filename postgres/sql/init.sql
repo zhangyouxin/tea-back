@@ -9,5 +9,5 @@ insert into users(username, password, super) values('admin', 'PBKDF2$sha256$901$
 insert into users(username, password) values('jin', 'PBKDF2$sha256$901$qy3SCiU4YncLaVLv$uE/2grmw1lxKm4CsbrqcL6ObQKLXHZxk');
 
 
-create table message (id SERIAL PRIMARY KEY, sub_topic VARCHAR(25) NOT NULL, device_no VARCHAR(25) NOT NULL, message VARCHAR(128) NOT NULL DEFAULT 0);
+create table messages (id SERIAL PRIMARY KEY, sub_topic VARCHAR(25) NOT NULL, device_no VARCHAR(25) NOT NULL, message VARCHAR(128) NOT NULL DEFAULT 0);
 insert into messages(sub_topic, device_no, message) values('sub', '123', 'hello');
