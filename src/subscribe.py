@@ -41,6 +41,7 @@ def client_loop():
 
 def on_connect(client, userdata, flags, rc):
     logging.warning('Connected with result code ' + str(rc))
+    cur = conn.cursor()
     client.subscribe("#")
 
 def on_message(client, userdata, msg):
@@ -65,5 +66,4 @@ def save_to_database(subTopic, deviceNo, msg):
     conn.commit()
 
 if __name__ == '__main__':
-    cur = conn.cursor()
     client_loop()
